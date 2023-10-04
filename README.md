@@ -1,6 +1,5 @@
 # questions-and-answers
 
-
 1. **Difference between `null` and `undefined`**:
 
    - `undefined` represents a variable that has been declared but has not been assigned a value.
@@ -17,7 +16,7 @@
 
    ```javascript
    function outer() {
-     let outerVar = 'I am from outer!';
+     let outerVar = "I am from outer!";
      function inner() {
        console.log(outerVar); // Accessing outerVar from the outer scope
      }
@@ -39,7 +38,7 @@
    ```javascript
    const promise = new Promise((resolve, reject) => {
      setTimeout(() => {
-       resolve('Data fetched successfully!');
+       resolve("Data fetched successfully!");
      }, 1000);
    });
 
@@ -63,7 +62,7 @@
 
    ```javascript
    const obj = {
-     name: 'John',
+     name: "John",
      sayName: function () {
        console.log(this.name);
      },
@@ -79,13 +78,13 @@
    ```javascript
    function doSomethingAsync(callback) {
      setTimeout(() => {
-       console.log('Task done!');
+       console.log("Task done!");
        callback();
      }, 1000);
    }
 
    doSomethingAsync(() => {
-     console.log('Callback executed.');
+     console.log("Callback executed.");
    });
    ```
 
@@ -110,7 +109,7 @@
      console.log(`Hello, my name is ${this.name}`);
    };
 
-   const person = new Person('Alice');
+   const person = new Person("Alice");
    person.greet(); // "Hello, my name is Alice"
    ```
 
@@ -142,7 +141,7 @@
 
 12. **Spread Operator (`...`)**:
 
-    The spread operator (`...`) is used to combine the elements of arrays or merge the properties of objects. 
+    The spread operator (`...`) is used to combine the elements of arrays or merge the properties of objects.
 
     ```javascript
     var arr1 = [1, 2, 3];
@@ -176,7 +175,7 @@
 14. **Closure (Practical Use)**:
 
     Closures are often used to create private variables and encapsulate data.
-    
+
     Closures are powerful because they allow functions to maintain access to variables from their outer scope even when the outer function has finished executing. This enables functions to have private variables, create data privacy, and implement various design patterns like the module pattern.
 
     Closures are commonly used in JavaScript for tasks like creating private variables, implementing currying, and handling asynchronous operations.
@@ -199,9 +198,9 @@
 
     ```javascript
     setTimeout(() => {
-      console.log('Async task completed.');
+      console.log("Async task completed.");
     }, 1000);
-    console.log('Main thread continues...');
+    console.log("Main thread continues...");
     ```
 
 16. **`localStorage` vs. `sessionStorage`**:
@@ -220,8 +219,8 @@
     `==` performs type coercion, while `===` enforces strict equality.
 
     ```javascript
-    5 == '5'; // true (type coercion)
-    5 === '5'; // false (strict equality)
+    5 == "5"; // true (type coercion)
+    5 === "5"; // false (strict equality)
     ```
 
 19. **Handling Errors with `try...catch`**:
@@ -233,7 +232,7 @@
       // Code that might throw an error
       const result = undefinedVariable / 2;
     } catch (error) {
-      console.error('An error occurred:', error);
+      console.error("An error occurred:", error);
     }
     ```
 
@@ -242,49 +241,54 @@
     Event delegation is a technique where you attach a single event listener to a common ancestor of multiple elements to handle events for all of them.
 
     ```javascript
-    document.getElementById('parentElement').addEventListener('click', (event) => {
-      if (event.target.tagName === 'LI') {
-        // Handle the click on an LI element
-        console.log('List item clicked:', event.target.textContent);
-      }
-    });
+    document
+      .getElementById("parentElement")
+      .addEventListener("click", (event) => {
+        if (event.target.tagName === "LI") {
+          // Handle the click on an LI element
+          console.log("List item clicked:", event.target.textContent);
+        }
+      });
     ```
 
 21. **Typeof null || []**
 
     ```javascript
-        console.log(typeof null); // Output: object
-        console.log(typeof []); // Output: object
-
+    console.log(typeof null); // Output: object
+    console.log(typeof []); // Output: object
     ```
+
     The `typeof` operator returns "object" when used with `null`, which is considered a bug in JavaScript.
 
 22. **Event Bubbling**
 
     ```html
-        <div id="parent">
-          <div id="child">
-            <button id="button">Click me</button>
-          </div>
-        </div>
+    <div id="parent">
+      <div id="child">
+        <button id="button">Click me</button>
+      </div>
+    </div>
     ```
 
     ```javascript
-    document.getElementById("button").addEventListener("click", function(event) {
+    document
+      .getElementById("button")
+      .addEventListener("click", function (event) {
         console.log("Button clicked");
         event.stopPropagation(); // Stop event bubbling
+      });
+
+    document.getElementById("child").addEventListener("click", function () {
+      console.log("Child clicked");
     });
 
-    document.getElementById("child").addEventListener("click", function() {
-        console.log("Child clicked");
-    });
-
-    document.getElementById("parent").addEventListener("click", function() {
-        console.log("Parent clicked");
+    document.getElementById("parent").addEventListener("click", function () {
+      console.log("Parent clicked");
     });
     ```
-        
-    When the button is clicked, the event bubbles up from the child element to the parent element. Without `event.stopPropagation()`, all three event listeners would be triggered, resulting in the following output:    
+
+    When the button is clicked, the event bubbles up from the child element to the parent element. Without `event.stopPropagation()`, all three event listeners would be triggered, resulting in the following output:
+
     ```
         Button clicked
         Child clicked
@@ -293,10 +297,10 @@
 
 23. **Object Mutation**
 
-    ```javascript 
+    ```javascript
     var person = {
       name: "John",
-      age: 30
+      age: 30,
     };
 
     person.age = 31;
@@ -305,7 +309,7 @@
     person.city = "New York";
     console.log(person); // Output: { name: "John", age: 31, city: "New York" }
     ```
-    
+
     The properties of the `person` object can be modified after it is created by directly assigning new values to them.
 
 24. **Object.freeze**
@@ -313,7 +317,7 @@
     ```javascript
     var person = {
       name: "John",
-      age: 30
+      age: 30,
     };
 
     Object.freeze(person);
@@ -327,14 +331,13 @@
 
     `Object.freeze()` prevents any modifications to the `person` object, making it read-only.
 
-
 25. **Object.keys:**
+
     ```javascript
     var person = {
       name: "John",
       age: 30,
-      city: "New York"
-    
+      city: "New York",
     };
     var keys = Object.keys(person);
     console.log(keys); // Output: ["name", "age", "city"]
@@ -342,47 +345,38 @@
 
     `Object.keys()` returns an array of property names of the `person` object. In this case, it returns `["name", "age", "city"]`.
 
+26. **What is Output of belove equations and why ?**
 
+  1) `[] == []` and `[] === []`
 
+    These two arrays are distinct objects in memory, even though they have the same contents.
+    The `==` operator checks if the two arrays reference the same object in memory, and since they do not, the comparison returns false.
 
-## Promise
+    `Output->` The output of [] == [] and [] === [] is `false` because these two empty arrays are separate objects in memory.
 
--	A promise is an object that represents the eventual completion (or failure) of an asynchronous operation and its resulting value. It is a way to handle asynchronous code in a more readable and manageable way.
+  2) `{} == {}` and `{} === {}`
+    
+    The `==` operator checks for value equality for objects, which means it checks if the two objects reference the same object in memory.
 
-In JavaScript, a promise can be in one of three states:
+    In this case, you have two separate and distinct empty objects `{}`. Even though they have the same contents (i.e., they are both empty objects), they are different objects in memory.
+    
+    So, both `{} == {}` and `{} === {}` will result in `false` because you are comparing two distinct empty object instances in memory.
 
-1. Pending: The initial state of a promise. It is neither fulfilled nor rejected.
-2. Fulfilled: The state of a promise when the asynchronous operation is completed successfully. In this state, the promise returns a value.
-3. Rejected: The state of a promise when the asynchronous operation encounters an error or fails. In this state, the promise returns an error or a reason for the failure.
+  3) `null == undefined` and `null === undefined`
 
-A promise can be created using the `Promise` constructor, which takes a callback function with two parameters: `resolve` and `reject`. Inside this callback function, you perform the asynchronous operation and call either `resolve(value)` to fulfill the promise with a value or `reject(error)` to reject the promise with an error.
+    `null == undefined:`
 
-Once a promise is created, you can chain `then()` and `catch()` methods to handle the fulfillment or rejection of the promise. The `then()` method is called when the promise is fulfilled, and it takes a callback function that receives the fulfilled value as an argument. The `catch()` method is called when the promise is rejected, and it takes a callback function that receives the rejection reason as an argument.
+    The == operator checks for value equality and type coercion. In this case, null and undefined are considered equal in value and type, so null == undefined is true.
+    
+    `null === undefined:`
+    The === operator checks for strict equality, meaning it compares both the value and the type of the operands. null and undefined have different types, so null === undefined is false.
+  
+  5) `0 == false` and `0 === false` 
+  
+    `0 == false` is true because of type coercion.
+    `0 === false` is false because it checks both value and type without type coercion.
 
-Here's an example of using a promise in JavaScript:
+  6) `1 == "1"` && `1 === "1"`
+    `1 == "1"`: This expression will return true. JavaScript will perform type coercion and convert the string "1" to a number before making the comparison, so it effectively becomes 1 == 1, which is true.
 
-```javascript
-    function fetchData() {
-      return new Promise((resolve, reject) => {
-        setTimeout(() => {
-          const data = 'Data received';
-          resolve(data);
-        }, 2000);
-      });
-    }
-```
-```javascript
-    fetchData()
-      .then((data) => {
-        console.log(data); // Output: Data received
-      })
-      .catch((error) => {
-        console.error(error);
-      });
-```
-
-In the above example, the `fetchData()` function returns a promise that resolves with the value `'Data received'` after a delay of 2000 milliseconds. We chain the `then()` method to handle the fulfilled value and log it to the console. If an error occurs during the asynchronous operation, the `catch()` method is called to handle the rejection.
-
-Promises provide a more structured and readable way to handle asynchronous code compared to traditional callbacks. They are widely used in JavaScript and are also supported in Angular for handling asynchronous operations, such as making HTTP requests or working with asynchronous APIs.
-
-
+    `1 === "1"`: This expression will return false. The strict equality operator === does not perform type coercion, so it checks that 1 and "1" have different types (number and string, respectively) and therefore considers them not equal.

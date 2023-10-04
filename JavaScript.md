@@ -398,8 +398,11 @@ A promise is an object that represents the eventual completion (or failure) of a
 In JavaScript, a promise can be in one of three states:
 
 Pending: The initial state of a promise. It is neither fulfilled nor rejected.
+
 Fulfilled: The state of a promise when the asynchronous operation is completed successfully. In this state, the promise returns a value.
+
 Rejected: The state of a promise when the asynchronous operation encounters an error or fails. In this state, the promise returns an error or a reason for the failure.
+
 A promise can be created using the Promise constructor, which takes a callback function with two parameters: resolve and reject. Inside this callback function, you perform the asynchronous operation and call either resolve(value) to fulfill the promise with a value or reject(error) to reject the promise with an error.
 
 Once a promise is created, you can chain then() and catch() methods to handle the fulfillment or rejection of the promise. The then() method is called when the promise is fulfilled, and it takes a callback function that receives the fulfilled value as an argument. The catch() method is called when the promise is rejected, and it takes a callback function that receives the rejection reason as an argument.
