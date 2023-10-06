@@ -192,18 +192,33 @@ In Angular, pipes are used for data transformation in templates. There are two t
    - They are executed only when Angular detects a pure change to the input value (i.e., the input value or its reference has changed).
    - Pure pipes are more efficient because they are called only when necessary.
    - Example: The `UpperCasePipe` is a pure pipe that transforms a string to uppercase.
+   
+   - `DecimalPipe`: Formats numbers as decimal numbers.
+   - `CurrencyPipe`: Formats numbers as currency values.
+   - `PercentPipe`: Formats numbers as percentages.
+   - `LowerCasePipe`: Transforms text to lowercase.
+   - `UpperCasePipe`: Transforms text to uppercase.
+   - `JsonPipe`: Converts an object to a JSON string.
+   - `SlicePipe`: Returns a slice of an array.
 
    ```html
    {{ 'hello' | uppercase }} <!-- Output: 'HELLO' -->
-   ```
 
+   ```
+  
 2. **Impure Pipes**
    
    - Impure pipes may have internal state or perform costly operations that are not dependent on the input value.
    - They are executed every time change detection runs, regardless of whether the input value has changed.
    - Impure pipes can impact performance if used carelessly because they run frequently.
-   - Example: The `DatePipe` is an impure pipe that formats a date. Since it doesn't rely solely on the input, it's impure.
+   - Example:
 
+   - `DatePipe` : Formats dates according to a specified format.
+   - `AsyncPipe` : Unwraps a promise or observable and updates the view when the data is resolved.
+   - `UpperCasePipe` and `LowerCasePipe` (can be impure if they receive a parameter, 
+   - e.g., {{ text | lowercase : true }}). 
+   - `Custom pipes` marked as impure by setting pure: false in the pipe metadata.
+   
    ```html
    {{ today | date:'short' }}
    ```

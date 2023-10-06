@@ -159,7 +159,9 @@ In modern JavaScript, it's generally recommended to use `let` and `const` for va
 In JavaScript, data types can be broadly categorized into two main categories:
 
     1. Primitive Data Types:
-        These are simple, immutable data types that represent single values. They are stored directly in memory and are compared by their value. The primitive data types in JavaScript are:
+        These are simple, immutable data types that represent single values. They are stored directly in memory and are compared by their value. 
+        
+        The primitive data types in JavaScript are:
 
         1. Number: Represents numeric values.
         2. String: Represents sequences of characters.
@@ -170,7 +172,11 @@ In JavaScript, data types can be broadly categorized into two main categories:
         7. BigInt (ES11): Represents large integers that can't be represented by the Number type.
 
     2. Non-Primitive (Reference) Data Types:
-        These are more complex data types that can hold multiple values and are stored as references in memory. When you work with non-primitive types, you're actually working with references to the data stored elsewhere in memory. The non-primitive data types in JavaScript are:
+        These are more complex data types that can hold multiple values and are stored as references in memory. 
+        
+        When you work with non-primitive types, you're actually working with references to the data stored elsewhere in memory. 
+        
+        The non-primitive data types in JavaScript are:
 
         1. Object: Represents collections of key-value pairs and can hold various data types as values.
         2. Array: A specialized type of object that represents an ordered list of values.
@@ -509,3 +515,316 @@ console.log(mergedObject); // Output: { name: "John", age: 30 }
 ```
 
 The spread operator (`...`) is used to combine the elements of arrays or merge the properties of objects.
+
+
+
+## Array
+
+In JavaScript, an array is a data structure used to store a collection of values, which can be of various data types such as numbers, strings, objects, or even other arrays.
+
+Array Methods.
+
+1. push()
+
+  Adds one or more elements to the end of an array and returns the new length of the array.
+
+  ```javascript
+  const fruits = ["apple", "banana"];
+  fruits.push("cherry");
+  // fruits is now ['apple', 'banana', 'cherry']
+  ```
+
+2. pop()
+
+  Removes the last element from an array and returns that element.
+
+  ```javascript
+  const fruits = ['apple', 'banana', 'cherry'];
+  const lastFruit = fruits.pop();
+  // lastFruit is 'cherry', and fruits is now ['apple', 'banana']
+
+  ```
+
+3. shift()
+
+  Removes the first element from an array and returns that element.
+
+  ```javascript
+  const fruits = ['apple', 'banana', 'cherry'];
+  const firstFruit = fruits.shift();
+  // firstFruit is 'apple', and fruits is now ['banana', 'cherry']
+
+  ```
+
+4. unshift()
+
+  Adds one or more elements to the beginning of an array and returns the new length of the array.
+
+  ```javascript
+  const fruits = ['banana', 'cherry'];
+  fruits.unshift('apple');
+  // fruits is now ['apple', 'banana', 'cherry']
+
+  ```
+
+5. concat()
+
+  Combines two or more arrays and returns a new array without modifying the original arrays.
+
+  ```javascript
+  const fruits1 = ['apple', 'banana'];
+  const fruits2 = ['cherry', 'orange'];
+  const combined = fruits1.concat(fruits2);
+  // combined is ['apple', 'banana', 'cherry', 'orange']
+
+  ```
+
+6. slice()
+
+  Returns a shallow copy of a portion of an array into a new array. It takes two arguments, start and end indices (end index is not included).
+
+  ```javascript
+  const fruits = ['apple', 'banana', 'cherry', 'orange'];
+  const sliced = fruits.slice(1, 3);
+  // sliced is ['banana', 'cherry']
+
+  ```
+
+7. splice()
+
+  Changes the contents of an array by removing, replacing, or adding elements at a specific index.
+
+  ```javascript
+  // 1) Removing Elements
+
+  const fruits = ['apple', 'banana', 'cherry', 'date'];
+  // Remove one element at index 2 (cherry)
+  const removedElement = fruits.splice(2, 1);
+  console.log(fruits); // ['apple', 'banana', 'date']
+  console.log(removedElement); // ['cherry']
+
+  // 2) Replacing Elements
+
+  const fruits = ['apple', 'banana', 'cherry', 'date'];
+  // Replace one element at index 2 (cherry) with 'grape'
+  fruits.splice(2, 1, 'grape');
+  console.log(fruits); // ['apple', 'banana', 'grape', 'date']
+
+  // 3) Adding Elements
+
+  const fruits = ['apple', 'banana', 'cherry', 'date'];
+  // Insert 'orange' and 'kiwi' at index 2
+  fruits.splice(2, 0, 'orange', 'kiwi');
+  console.log(fruits); // ['apple', 'banana', 'orange', 'kiwi', 'cherry', 'date']
+
+  // 4) Removing and Replacing Multiple Elements
+
+  const fruits = ['apple', 'banana', 'cherry', 'date'];
+  // Remove two elements starting from index 1 (banana and cherry) and replace them with 'grape' and 'kiwi'
+  const removedElements = fruits.splice(1, 2, 'grape', 'kiwi');
+  console.log(fruits); // ['apple', 'grape', 'kiwi', 'date']
+  console.log(removedElements); // ['banana', 'cherry']
+
+
+  ```
+
+  
+
+8. forEach()
+
+  Executes a provided function once for each array element.
+
+  ```javascript
+  const numbers = [1, 2, 3];
+  numbers.forEach((number) => {
+    console.log(number * 2);
+  });
+  // Console output: 2, 4, 6
+
+  ```
+9. map()
+
+  Creates a new array with the results of calling a provided function on every element in the array.
+
+  ```javascript
+  const numbers = [1, 2, 3];
+  const doubled = numbers.map((number) => number * 2);
+  // doubled is [2, 4, 6]
+
+  ```
+
+10. filter()
+
+  Creates a new array with all elements that pass a provided test.
+
+  ```javascript
+  const numbers = [1, 2, 3, 4, 5];
+  const evenNumbers = numbers.filter((number) => number % 2 === 0);
+  // evenNumbers is [2, 4]
+
+  ```
+
+11. find()
+
+  Returns the first element in the array that satisfies a provided testing function.
+
+  ```javascript
+  const numbers = [1, 2, 3, 4, 5];
+  const even = numbers.find((number) => number % 2 === 0);
+  // even is 2 (the first even number in the array)
+
+  ```  
+
+12. indexOf()
+
+  Returns the first index at which a given element can be found in the array, or -1 if it's not present.
+
+  ```javascript 
+  const fruits = ['apple', 'banana', 'cherry', 'orange'];
+  const index = fruits.indexOf('cherry');
+  // index is 2
+
+  ```
+
+13. lastIndexOf()
+  
+  Returns the last index at which a given element can be found in the array, or -1 if it's not present.
+
+  ```javascript 
+  const fruits = ['apple', 'banana', 'cherry', 'cherry'];
+  const lastIndex = fruits.lastIndexOf('cherry');
+  // lastIndex is 3
+
+  ```
+
+14. includes()
+
+  Checks if an array includes a certain element and returns true or false.
+
+  ```javascript
+  const fruits = ['apple', 'banana', 'cherry'];
+  const includesCherry = fruits.includes('cherry');
+  // includesCherry is true
+
+  ```
+
+15. every()
+
+  Checks if all elements in an array pass a provided test.
+
+  ```javascript
+  const numbers = [2, 4, 6, 8];
+  const allEven = numbers.every((number) => number % 2 === 0);
+  // allEven is true
+
+  ```
+
+16. some()
+
+  Checks if at least one element in an array passes a provided test
+
+  ```javascript
+  const numbers = [1, 3, 5, 6];
+  const hasEven = numbers.some((number) => number % 2 === 0);
+  // hasEven is true
+
+  ```
+
+17. reduce()
+
+  Applies a function against an accumulator and each element in the array (from left to right) to reduce it to a single value.
+
+  ```javascript
+    const numbers = [1, 2, 3, 4, 5];
+    const sum = numbers.reduce((accumulator, currentValue) => accumulator + currentValue, 0);
+    // sum is 15
+
+  ```
+
+
+18. sort()
+  
+  Sorts the elements of an array in place and returns the sorted array.
+
+  ```javascript
+  const fruits = ['cherry', 'banana', 'apple'];
+  fruits.sort();
+  // fruits is now ['apple', 'banana', 'cherry']
+  
+  ```
+
+19. reverse()
+  
+  Reverses the order of elements in an array in place.
+  ```js
+  const numbers = [1, 2, 3, 4, 5];
+  numbers.reverse();
+  // numbers is now [5, 4, 3, 2, 1]
+
+  ```
+
+20. join() 
+
+  Joins all elements of an array into a string, optionally separated by a specified delimiter.
+
+  ```js
+  const fruits = ['apple', 'banana', 'cherry'];
+  const fruitString = fruits.join(', ');
+  // fruitString is "apple, banana, cherry"
+
+  ```
+
+## How to Export module in Javascript ? types of export.
+
+In JavaScript, there are two main ways to export values or functions from a module: export and default export. 
+
+1. **export**
+
+The export keyword is used to export one or more named values or functions from a module.
+You can have multiple export statements in a single module, and each one can export multiple values.
+When importing from a module that uses export, you must specify the names of the exported values in curly braces {} during import.
+Example of exporting named values/functions:
+
+  ```javascript
+  // module.js
+  export const name = "John";
+  export function sayHello() {
+    console.log(`Hello, ${name}!`);
+  }
+```
+
+  ```javascript
+  // import.js
+  import { name, sayHello } from './module.js';
+  console.log(name); // "John"
+  sayHello(); // "Hello, John!"
+  ```
+
+
+
+2. **default export**
+
+The default export is used to export a single value or function as the default export of a module.
+Each module can have only one default export.
+
+When importing from a module that uses a default export, you can give it any name you want during import (it doesn't need to be enclosed in curly braces).
+
+Example of default export:
+
+  ```javascript
+
+  // module.js
+  const defaultPerson = {
+    name: "John",
+    age: 30,
+  };
+
+  export default defaultPerson;
+  ```
+
+  ```javascript
+
+  // import.js
+  import person from './module.js'; // 'person' is the name we chose
+  console.log(person.name); // "John"
+  ```

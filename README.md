@@ -209,6 +209,7 @@
 
     - `localStorage` persists data until cleared by the user.
     - `sessionStorage` persists data only for the duration of a page session.
+    - Typically, the storage limit for both is around 5-10 megabytes per domain.
 
 17. **`fetch` API vs. `XMLHttpRequest`**:
 

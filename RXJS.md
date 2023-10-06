@@ -11,7 +11,7 @@
   **1 : Observables**: Observables are the core building blocks of RxJS. 
             They represent a stream of data that can change over time. These data streams can come from various sources, such as user input, HTTP requests, or timer events.
 
-  **2 : Observers:** Observers are entities that subscribe to observables to receive and react to data emitted by the observable. 
+  **2 : Observers:** Observers are objects that subscribe to observables to receive and react to data emitted by the observable. 
             An observer consists of three optional callback functions: 
                 next (handles data emissions), 
                 error (handles errors), 
