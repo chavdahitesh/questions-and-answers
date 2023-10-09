@@ -396,3 +396,96 @@ Here is a list of commonly used directives in Angular along with their types:
 7. ngClass, ngStyle, ngModel, and ngSwitch are Attribute Directives and ngIf and ngFor are Structural Directives.
 
 These are just a few examples of the directives available in Angular. Directives allow you to manipulate the DOM, apply styles, handle events, and more, providing a powerful way to extend the functionality of HTML elements or create custom HTML elements in Angular.
+
+
+## What is provider ?
+Providers are typically configured at the module level using the providers array within the @NgModule decorator. 
+
+Once a provider is configured, Angular's DI system takes care of injecting the correct instances of services or values wherever they are requested throughout your application.
+
+1. Class providers.
+This is the most common type of provider. It associates a token (usually a class) with a factory function that creates instances of that class
+
+```javascript
+  @Injectable()
+  class MyService {
+    // ...
+  }
+
+  providers: [MyService]
+```
+
+2. Value Providers
+These providers associate a token with a specific value, which can be any JavaScript value, such as a string, number, or object. 
+The same value will be injected wherever this token is requested.
+
+```javascript
+  providers: [
+    { provide: 'API_URL', useValue: 'https://example.com/api' }
+  ] 
+  ```
+3. Factory Providers
+These providers use a factory function to create and return the value to be injected. 
+This is useful when you need more complex logic to create an instance.
+
+```javascript
+  providers: [
+    {
+      provide: 'MyService',
+      useFactory: () => {
+        // Custom logic to create and configure the service
+        return new MyService();
+      },
+    },
+  ]
+
+```
+
+4. Existing Providers
+You can configure a provider to use an existing provider (usually from a different module). 
+This is useful when you want to reuse a service or value provided by another module.
+
+```javascript
+providers: [
+  {
+    provide: MyService,
+    useExisting: AnotherService,
+  },
+]
+
+```
+
+## What is angular events ?
+In Angular, events typically refer to interactions and actions that occur within a web application, such as user input, component lifecycle events, or custom events triggered by your application's code. 
+
+These events play a crucial role in handling user interactions and application state changes. 
+
+Here is a list of some common types of events in Angular:
+
+1. User Input Events:
+Examples include `click events, input events, mouse events, keyboard events`, and `form submission` events.
+
+2. Component Lifecycle Events:
+Examples include `ngOnInit, ngOnChanges, ngAfterViewInit, ngOnDestroy`, and others.
+
+3. HTTP Request Events:
+Examples include `http.get()` or `http.post()` events, such as success or error callbacks.
+
+4. Router Events:
+Angular's router emits events when navigating between different routes.
+Examples include `NavigationStart, NavigationEnd, RouteConfigLoadStart`, and `RouteConfigLoadEnd` events.
+
+5. Custom Events:
+You can create and emit custom events within your Angular components to facilitate communication between parent and child components.
+Use @Output decorators in child components and (event) bindings in parent components to listen for and respond to these events.
+
+6. DOM Events:
+You can interact with and handle standard DOM events in Angular components using event binding.
+Examples include binding to DOM events like `click, input, mouseover`, and `keydown`.
+
+7. Window and Document Events:
+You can listen for global window and document events in Angular to handle application-wide interactions.
+Examples include `scroll events, resize events`, and `keydown events` on the document.
+
+8. Form Events:
+Angular provides mechanisms to handle form-related events such as form submissions, input changes, and validation events.
