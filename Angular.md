@@ -253,9 +253,40 @@ In this example, whether you use the `CustomPipe` as a pure or impure pipe, the 
 ## Async Pipe:
 
 The Async Pipe in Angular is a built-in pipe that simplifies the handling of asynchronous data streams, particularly Observables or Promises, in templates. 
-The Async Pipe subscribes to an Observable or Promise and automatically updates the view with the latest emitted value. It also handles the unsubscribing process when the component is destroyed, preventing memory leaks. The Async Pipe is commonly used to display data that is fetched asynchronously from APIs or services directly in the template.
+
+The Async Pipe subscribes to an Observable or Promise and automatically updates the view with the latest emitted value. 
+
+It also handles the unsubscribing process when the component is destroyed, preventing memory leaks. 
+
+The Async Pipe is commonly used to display data that is fetched asynchronously from APIs or services directly in the template.
     
-Using the Async Pipe eliminates the need for manual subscription management and simplifies the code, making it more readable and maintainable.
+
+```javascript
+import { Component } from '@angular/core';
+import { Observable } from 'rxjs';
+import { DataService } from './data.service';
+
+@Component({
+  selector: 'app-data',
+  template: `
+    <div *ngIf="data$ | async as data; else loading">
+      <h2>Data</h2>
+      <ul>
+        <li *ngFor="let item of data">{{ item.name }}</li>
+      </ul>
+    </div>
+    <ng-template #loading>Loading data...</ng-template>
+  `,
+})
+export class DataComponent {
+  data$: Observable<any[]>;
+
+  constructor(private dataService: DataService) {
+    this.data$ = this.dataService.getData(); // Assume getData() returns an Observable
+  }
+}
+
+```
 
 
 ## Interceptor:
@@ -393,7 +424,7 @@ Here is a list of commonly used directives in Angular along with their types:
      </div>
      ```
 
-7. ngClass, ngStyle, ngModel, and ngSwitch are Attribute Directives and ngIf and ngFor are Structural Directives.
+7. ngClass, ngStyle, ngModel are Attribute Directives and ngIf, ngSwitch and ngFor are Structural Directives.
 
 These are just a few examples of the directives available in Angular. Directives allow you to manipulate the DOM, apply styles, handle events, and more, providing a powerful way to extend the functionality of HTML elements or create custom HTML elements in Angular.
 
@@ -489,3 +520,87 @@ Examples include `scroll events, resize events`, and `keydown events` on the doc
 
 8. Form Events:
 Angular provides mechanisms to handle form-related events such as form submissions, input changes, and validation events.
+
+## Difference between ng-container and ng-template.
+
+1. ng-container is a container element that doesn't produce any extra elements in the final DOM and is used to group elements or apply structural directives without introducing additional elements.
+
+2. ng-template defines a template that can be referenced and instantiated later in your component code, making it useful for creating reusable templates for conditional rendering, iteration, or custom directives.
+
+
+## Angular route guards and types of route guards.
+In Angular, route guards are mechanisms used to protect and control access to specific routes or components in your application. They allow you to add logic that runs before or after navigating to a route.
+
+Types of Route Guard :-
+
+1. `CanActivate` Guard:
+- The `CanActivate` guard determines whether a user is allowed to activate a particular route. It checks conditions and returns true to grant access or false to deny access. 
+
+- Guard Event:
+  - Event: `canActivate`
+  - Occurs before the route is activated.
+- Common Use Cases: 
+  - Authentication and authorization checks.
+  - Redirecting unauthenticated users to a login page.
+
+2. `CanActivateChild` Guard:
+- The `CanActivateChild` guard is similar to CanActivate but applies to child routes within a parent route.
+- Guard Event:
+  - Event: `canActivateChild`
+  - Occurs before child routes are activated.
+- Common Use Cases:
+  - Parent-level access control for nested routes.
+
+3. `CanDeactivate` Guard:
+- The `CanDeactivate` guard determines whether a user is allowed to deactivate a route, i.e., leave a page. It checks conditions and returns true to allow deactivation or false to prevent it.
+
+- Guard Event:
+  - Event: `canDeactivate`
+  - Occurs when a user attempts to leave a route.
+- Common Use Cases:
+  - Confirmation prompts for unsaved changes.
+  - Preventing accidental navigation away from a form.
+
+4. `Resolve` Guard:
+- The `Resolve` guard performs data fetching and processing before a route is activated. It resolves data asynchronously and makes it available to the route's component.
+
+- Guard Event:
+  - Event: 
+    - Resolves data before route activation.
+  - Common Use Cases:
+    - Loading data from a server before displaying a component.
+    - Pre-fetching data required for a component.
+
+5. `CanLoad` Guard:
+- The `CanLoad` guard determines whether a user is allowed to load a lazy-loaded feature module. It checks conditions and returns true to allow loading or false to prevent it.
+
+- Guard Event:
+  - Event: canLoad
+    - Occurs before attempting to load a lazy-loaded module.
+  - Common Use Cases:
+    - Authorization checks for lazy-loaded modules.
+    - Preventing unauthorized access to feature modules.
+
+6. `Route Resolvers` (Not a Guard, but related):
+- Route resolvers are not guards, but they can be used to fetch data before navigating to a route. Unlike guards, resolvers always return data, even if the data fetching is asynchronous.
+
+
+## Encapsulation in Angular:
+In Angular, encapsulation refers to how component styles are scoped and applied to the component's view.
+- The available encapsulation modes are:
+  - `ViewEncapsulation.Emulated (default)`: This is the default mode. It emulates shadow DOM by adding unique attribute selectors to style rules, making styles specific to the component's view. This ensures that component styles do not leak out to other parts of the application.
+
+  - `ViewEncapsulation.Native`: This mode uses the browser's native shadow DOM to encapsulate styles. It provides true style isolation, but it may not be supported in all browsers.
+
+  - `ViewEncapsulation.None`: This mode doesn't encapsulate component styles at all. Styles defined in a component's CSS are applied globally, potentially affecting other parts of the application. Use this mode sparingly and with caution.
+
+```javascript
+  @Component({
+    selector: 'app-my-component',
+    templateUrl: './my-component.component.html',
+    styleUrls: ['./my-component.component.css'],
+    encapsulation: ViewEncapsulation.Emulated, // or ViewEncapsulation.Native or ViewEncapsulation.None
+  })
+```
+ 
+

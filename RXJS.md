@@ -148,7 +148,7 @@ Here's an example to demonstrate the usage of a BehaviorSubject:
     subject.next('Second value');
 ```
 
-# Differences between Subject and BehaviorSubject ?
+## Difference between Subject and BehaviorSubject ?
 
 1. Initial Value:
 
@@ -164,7 +164,7 @@ Here's an example to demonstrate the usage of a BehaviorSubject:
  BehaviorSubject: A BehaviorSubject has memory of the most recent value it received. 
  When a new observer subscribes, it immediately emits the last value to them. It also keeps track of the current value, which can be accessed using the value property.
 
- # Observables and Promises key differences?
+ ## Difference between Observables and Promises ?
 
 Observables and Promises are both used for handling asynchronous operations in JavaScript, but they have some key differences:
 
@@ -189,3 +189,11 @@ Observables and Promises are both used for handling asynchronous operations in J
 - Observables: Observables have built-in support for handling time-related operations, such as delaying emissions, setting intervals, and handling timeouts.
 
 In summary, Promises are suitable for handling single asynchronous operations that resolve or reject with a single value, while Observables are more flexible and powerful for handling multiple asynchronous operations, handling cancellation, and providing advanced composition and transformation capabilities.
+
+
+
+## Difference between BehaviorSubject and Observable in RxJS?
+- Observable is a `consumer/listener` while a BehaviourSubject is a `synchronous data source that emits data` to observers.
+- Observables are `stateless` while BehaviourSubject is `stateful`.
+- Observables `create a copy of the data` while BehaviourSubject `emits data to observers`.
+- Observables are `unidirectional` in nature while BehaviorSubject is `bi-directional` in nature.1

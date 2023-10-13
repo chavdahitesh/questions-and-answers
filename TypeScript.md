@@ -226,3 +226,33 @@ They provide a powerful way to write reusable code that can handle different typ
 
 Generics enable you to create generic algorithms, data structures, and utility functions that work with a wide range of data types.
 
+
+
+***Q- What is ENUM in typescript?***
+
+
+In TypeScript, an enum (short for "enumeration") is a data type that allows you to define a set of named numeric values. It is a way to describe a group of related constants.
+
+Enums provide a way to give friendly names to numeric values, making your code more readable and self-documenting. 
+
+They are particularly useful when you have a fixed set of related constants.
+
+```javascript
+enum DaysOfWeek {
+  MONDAY, // if you assign MONDAY = 1; then it will start with 1 insted of 0;
+  TUESDAY,
+  WEDNESDAY,
+  THURSDAY,
+  FRIDAY,
+  SATURDAY,
+  SUNDAY,
+}
+
+let today: DaysOfWeek = DaysOfWeek.WEDNESDAY;
+console.log(today); // Output: 2 (since it starts at 0, WEDNESDAY corresponds to 2)
+                    // if MONDAY = 1 then output will be 3;
+if (today === DaysOfWeek.WEDNESDAY) {
+  console.log("It's Wednesday!");
+}
+
+```

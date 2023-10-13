@@ -828,3 +828,42 @@ Example of default export:
   import person from './module.js'; // 'person' is the name we chose
   console.log(person.name); // "John"
   ```
+
+
+## setTimeout and setInterval in JavaScript.
+- Both methods in JavaScript used for executing code after a specified delay
+- `setTimeout`: Executes the specified code once, after the specified delay.
+- `setInterval`: Repeatedly executes the specified code at a specified interval until it's cleared.
+- Syntax :
+  ```javascript
+    setTimeout(callback, delay);
+  
+    setInterval(callback, interval);
+  ```
+- Return Value:
+  - `setTimeout` returns a unique identifier (a timeout ID) that can be used to clear the timeout using `clearTimeout` before it executes if needed.
+  - `setInterval` returns a unique identifier (an interval ID) that can be used to clear the interval using `clearInterval` if you want to stop the repeated execution.
+- Example :- 
+  ```javascript
+  // SETTIMEOUT
+  function showMessage() {
+    console.log("Hello, world!");
+  }
+
+  setTimeout(showMessage, 2000); // Executes showMessage() after 2-second delay
+
+  // SETINTERVAL
+  let count = 0;
+  function updateCounter() {
+    count++;
+    console.log("Count: " + count);
+  }
+
+  const intervalId = setInterval(updateCounter, 1000); // Executes updateCounter() every 1 second
+
+  // To stop the interval after a certain number of iterations or based on some condition:
+  if (count >= 5) {
+    clearInterval(intervalId); // Stops the interval
+  }
+    
+  ```
